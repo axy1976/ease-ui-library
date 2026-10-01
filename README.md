@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="assets/logo.jpg" alt="Ease UI Logo" width="200" style="border-radius: 12px; margin-bottom: 20px" />
+</div>
+
 # Ease UI
 
 A lightweight, token-driven, accessible **React UI library for Next.js**.
