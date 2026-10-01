@@ -36,6 +36,7 @@
 }
 
 [data-ease="stack"] {
+  display: flex;
   flex-direction: column;
   gap: var(--ease-spacing-3);
 }
@@ -1795,6 +1796,9 @@
 }
 
 [data-ease="sidebar"] [data-ease-sidebar="section"] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ease-spacing-1);
   margin-top: var(--ease-spacing-4);
 }
 
