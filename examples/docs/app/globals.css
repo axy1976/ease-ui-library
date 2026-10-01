@@ -1,0 +1,93 @@
+:root {
+  /* Docs-site-only layout tokens (the library supplies the rest). */
+  --docs-sidebar-width: 256px;
+  --docs-max-width: 1440px;
+  color-scheme: light dark;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--ease-color-bg, #fff);
+  color: var(--ease-color-text, #111);
+  font-family: var(
+    --ease-font-family-sans,
+    ui-sans-serif,
+    system-ui,
+    sans-serif
+  );
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Docs content typography (scoped to the documentation site only). */
+.ease-docs-prose {
+  color: var(--ease-color-text);
+  font-size: var(--ease-font-size-sm, 0.875rem);
+  line-height: 1.65;
+  max-width: 76ch;
+}
+
+.ease-docs-prose h1,
+.ease-docs-prose h2,
+.ease-docs-prose h3 {
+  color: var(--ease-color-text);
+  font-weight: var(--ease-font-weight-semibold, 600);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.ease-docs-prose h1 {
+  font-size: var(--ease-font-size-2xl, 1.5rem);
+}
+.ease-docs-prose h2 {
+  font-size: var(--ease-font-size-lg, 1.125rem);
+  margin-top: 2rem;
+}
+.ease-docs-prose h3 {
+  font-size: var(--ease-font-size-md, 1rem);
+}
+
+.ease-docs-prose p {
+  color: var(--ease-color-text-muted);
+  margin: 0.6rem 0 1rem;
+}
+
+.ease-docs-prose code:not(pre code) {
+  font-family: var(--ease-font-family-mono, ui-monospace, monospace);
+  font-size: 0.9em;
+  background: var(--ease-color-surface-subtle);
+  border: 1px solid var(--ease-color-border);
+  border-radius: var(--ease-radius-sm);
+  padding: 0.05em 0.35em;
+}
+
+.ease-docs-prose ul,
+.ease-docs-prose ol {
+  margin: 0.6rem 0 1rem;
+  padding-inline-start: 1.25rem;
+  color: var(--ease-color-text-muted);
+}
+
+.ease-docs-prose li {
+  margin-block: 0.25rem;
+}
+.ease-docs-prose li code {
+  color: var(--ease-color-text);
+}
+.ease-docs-prose a {
+  color: var(--ease-color-primary);
+  text-decoration: none;
+}
+.ease-docs-prose a:hover {
+  text-decoration: underline;
+}
+.ease-docs-prose strong {
+  color: var(--ease-color-text);
+  font-weight: var(--ease-font-weight-semibold, 600);
+}

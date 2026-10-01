@@ -1,0 +1,168 @@
+/*
+ * Ease UI — design tokens
+ *
+ * The single source of truth for visual values. All component styles read
+ * exclusively from these variables; nothing in the component CSS is hardcoded
+ * to a color or size that cannot be overridden from outside.
+ *
+ * The light palette is the document default. The dark palette is provided on
+ * [data-ease-theme="dark"] in themes.css, and system mode follows the
+ * prefers-color-scheme media query. Override any token on :root (or a scoped
+ * selector such as .my-brand) to rebrand the library without touching source.
+ *
+ * Token families (all public):
+ *   --ease-color-*        color surfaces, text, status, accents
+ *   --ease-font-*         family, sizes, weights, leading, tracking
+ *   --ease-spacing-*      4px-based spacing scale
+ *   --ease-radius-*       restrained corner radii
+ *   --ease-shadow-*       subtle elevation only
+ *   --ease-duration-*     motion (instant / fast / normal / slow)
+ *   --ease-ease-*         timing functions
+ *   --ease-z-*            stacking contexts
+ *   --ease-control-*      control heights & focus treatment (compact by default)
+ */
+
+:root {
+  color-scheme: light dark;
+
+  /* ---------- color: surfaces ---------- */
+  --ease-color-bg: #f7f8fa;
+  --ease-color-surface: #ffffff;
+  --ease-color-surface-subtle: #f1f3f5;
+  --ease-color-surface-raised: #ffffff;
+  --ease-color-surface-overlay: #ffffff;
+
+  /* ---------- color: lines ---------- */
+  --ease-color-border: #e3e6ea;
+  --ease-color-border-strong: #c6ccd3;
+
+  /* ---------- color: text ---------- */
+  --ease-color-text: #1f2733;
+  --ease-color-text-muted: #525b66;
+  --ease-color-text-subtle: #8a93a0;
+  --ease-color-text-disabled: #a9b0b9;
+  --ease-color-text-inverse: #ffffff;
+
+  /* ---------- color: accents ---------- */
+  --ease-color-primary: #2458c6;
+  --ease-color-primary-hover: #1f4cab;
+  --ease-color-primary-active: #1a3f8f;
+  --ease-color-on-primary: #ffffff;
+  --ease-color-secondary: #3f4a58;
+  --ease-color-on-secondary: #ffffff;
+
+  /* ---------- color: status ---------- */
+  --ease-color-success: #2e8b57;
+  --ease-color-success-subtle: #e6f4ec;
+  --ease-color-warning: #b45309;
+  --ease-color-warning-subtle: #fdf1dd;
+  --ease-color-danger: #c73a3a;
+  --ease-color-danger-subtle: #fbe9e9;
+  --ease-color-info: #2458c6;
+  --ease-color-info-subtle: #e8effc;
+  --ease-color-neutral: #525b66;
+  --ease-color-neutral-subtle: #eef0f3;
+  --ease-color-on-success: #ffffff;
+  --ease-color-on-warning: #ffffff;
+  --ease-color-on-danger: #ffffff;
+  --ease-color-on-info: #ffffff;
+  --ease-color-on-neutral: #ffffff;
+
+  /* ---------- color: selected / hover tints ---------- */
+  --ease-color-selected: #e8effc;
+  --ease-color-hover: #eef0f3;
+  --ease-color-selected-strong: #dbe6fb;
+  --ease-color-active: #e2e6eb;
+
+  /* ---------- typography ---------- */
+  --ease-font-family-sans:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --ease-font-family-mono:
+    ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Menlo, Consolas,
+    monospace;
+
+  --ease-font-size-xs: 0.71875rem; /* 11.5px */
+  --ease-font-size-sm: 0.8125rem; /* 13px */
+  --ease-font-size-md: 0.875rem; /* 14px */
+  --ease-font-size-lg: 1rem; /* 16px */
+  --ease-font-size-xl: 1.25rem; /* 20px */
+  --ease-font-size-2xl: 1.625rem; /* 26px */
+
+  --ease-font-weight-regular: 400;
+  --ease-font-weight-medium: 500;
+  --ease-font-weight-semibold: 600;
+
+  --ease-leading-tight: 1.25;
+  --ease-leading-normal: 1.5;
+
+  --ease-tracking-wide: 0.0125em;
+
+  /* ---------- spacing (4px base scale) ---------- */
+  --ease-spacing-0: 0;
+  --ease-spacing-1: 0.25rem;
+  --ease-spacing-2: 0.5rem;
+  --ease-spacing-3: 0.75rem;
+  --ease-spacing-4: 1rem;
+  --ease-spacing-5: 1.25rem;
+  --ease-spacing-6: 1.5rem;
+  --ease-spacing-8: 2rem;
+  --ease-spacing-10: 2.5rem;
+
+  /* ---------- radius (restrained) ---------- */
+  --ease-radius-sm: 3px;
+  --ease-radius-md: 5px;
+  --ease-radius-lg: 8px;
+  --ease-radius-full: 999px;
+
+  /* ---------- shadows (subtle, only for elevation) ---------- */
+  --ease-shadow-sm: 0 1px 2px rgb(16 24 40 / 6%);
+  --ease-shadow-md: 0 4px 12px rgb(16 24 40 / 10%);
+  --ease-shadow-lg: 0 12px 28px rgb(16 24 40 / 14%);
+
+  /* ---------- motion ---------- */
+  --ease-duration-instant: 0ms;
+  --ease-duration-fast: 120ms;
+  --ease-duration-normal: 200ms;
+  --ease-duration-slow: 320ms;
+  --ease-ease-out: cubic-bezier(0.2, 0, 0.38, 0.9);
+
+  /* ---------- focus ---------- */
+  --ease-focus-ring:
+    0 0 0 2px var(--ease-color-surface), 0 0 0 4px var(--ease-color-primary);
+
+  /* ---------- z-index layers ---------- */
+  --ease-z-dropdown: 1000;
+  --ease-z-sticky: 1100;
+  --ease-z-overlay-backdrop: 1200;
+  --ease-z-overlay: 1210;
+  --ease-z-tooltip: 1300;
+  --ease-z-toast: 1400;
+
+  /* ---------- control sizes (density-driven, compact by default) ---------- */
+  --ease-density: 1;
+  --ease-density-pad: 1;
+  --ease-density-row: 1;
+  --ease-control-height-xs: calc(22px * var(--ease-density));
+  --ease-control-height-sm: calc(28px * var(--ease-density));
+  --ease-control-height-md: calc(34px * var(--ease-density));
+  --ease-control-height-lg: calc(40px * var(--ease-density));
+  --ease-control-padding-inline-sm: calc(0.625rem * var(--ease-density-pad));
+  --ease-control-padding-inline-md: calc(0.875rem * var(--ease-density-pad));
+  --ease-row-height: calc(40px * var(--ease-density-row));
+  --ease-row-height-compact: calc(32px * var(--ease-density-row));
+}
+
+/*
+ * Reduced motion: any animation/transition in the library collapses to
+ * near-zero duration. This is the only global opt-out; individual components
+ * additionally guard JS-driven animation behind matchMedia where relevant.
+ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ease-duration-instant: 0ms;
+    --ease-duration-fast: 0ms;
+    --ease-duration-normal: 0ms;
+    --ease-duration-slow: 0ms;
+  }
+}

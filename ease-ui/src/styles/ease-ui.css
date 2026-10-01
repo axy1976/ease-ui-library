@@ -1,0 +1,16 @@
+/*
+ * Ease UI — convenience bundle.
+ *
+ * Import this once at the app root (e.g. in the root layout):
+ *
+ *   import "ease-ui/styles/ease-ui.css";
+ *
+ * It pulls in tokens, themes, and all component styles in the correct order.
+ */
+@import "./tokens.css";
+@import "./themes.css";
+@import "./components.css";
+
+body {
+  margin: 0;
+}

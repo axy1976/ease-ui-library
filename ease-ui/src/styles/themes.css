@@ -1,0 +1,163 @@
+/*
+ * Ease UI — themes
+ *
+ * Themes are *token overrides only*. No component markup or runtime state is
+ * required to re-skin the library:
+ *
+ *   <html data-ease-theme="dark">            dark mode
+ *   <html data-ease-theme="light">           force light
+ *   (no attribute)                           system, follows prefers-color-scheme
+ *
+ * The EaseProvider client component toggles this attribute (or persists a
+ * preference in localStorage), but plain CSS consumers get the same behavior
+ * with zero JavaScript.
+ *
+ * Dark mode is designed, not inverted: text contrast, borders, hover tints and
+ * status colors are re-tuned so muted elements stay readable.
+ */
+
+[data-ease-theme="dark"] {
+  /* surfaces */
+  --ease-color-bg: #0f141a;
+  --ease-color-surface: #161d26;
+  --ease-color-surface-subtle: #1d2530;
+  --ease-color-surface-raised: #1b232e;
+  --ease-color-surface-overlay: #1b232e;
+
+  /* lines */
+  --ease-color-border: #2b3441;
+  --ease-color-border-strong: #3d4856;
+
+  /* text */
+  --ease-color-text: #e6eaef;
+  --ease-color-text-muted: #9aa4b2;
+  --ease-color-text-subtle: #707b8a;
+  --ease-color-text-disabled: #5a6472;
+  --ease-color-text-inverse: #11161c;
+
+  /* accents */
+  --ease-color-primary: #5b8def;
+  --ease-color-primary-hover: #6f9bf2;
+  --ease-color-primary-active: #4a7de0;
+  --ease-color-on-primary: #0d1320;
+
+  --ease-color-secondary: #333d4a;
+  --ease-color-on-secondary: #e6eaef;
+
+  /* status */
+  --ease-color-success: #4cc38a;
+  --ease-color-success-subtle: #12301f;
+  --ease-color-warning: #e0a83e;
+  --ease-color-warning-subtle: #382913;
+  --ease-color-danger: #e06a6a;
+  --ease-color-danger-subtle: #3a1d1d;
+  --ease-color-info: #6fa0f0;
+  --ease-color-info-subtle: #16283e;
+  --ease-color-neutral: #9aa4b2;
+  --ease-color-neutral-subtle: #212a36;
+  --ease-color-on-success: #0b2016;
+  --ease-color-on-warning: #20160a;
+  --ease-color-on-danger: #200e0e;
+  --ease-color-on-info: #0b1626;
+  --ease-color-on-neutral: #11161c;
+
+  /* tints */
+  --ease-color-selected: #1b2f4d;
+  --ease-color-hover: #212a36;
+  --ease-color-selected-strong: #21324f;
+  --ease-color-active: #2a3340;
+
+  /* elevation reads differently on dark surfaces */
+  --ease-shadow-sm: 0 1px 2px rgb(0 0 0 / 30%);
+  --ease-shadow-md: 0 4px 12px rgb(0 0 0 / 40%);
+  --ease-shadow-lg: 0 12px 28px rgb(0 0 0 / 50%);
+
+  /* focus ring needs the dark surface color in its gap */
+  --ease-focus-ring:
+    0 0 0 2px var(--ease-color-surface), 0 0 0 4px var(--ease-color-primary);
+}
+
+/*
+ * System mode: when no explicit theme is set, follow the OS preference.
+ * The attribute selectors above must take precedence, so the media query only
+ * applies when [data-ease-theme] is absent.
+ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-ease-theme="light"]):not([data-ease-theme="dark"]) {
+    --ease-color-bg: #0f141a;
+    --ease-color-surface: #161d26;
+    --ease-color-surface-subtle: #1d2530;
+    --ease-color-surface-raised: #1b232e;
+    --ease-color-surface-overlay: #1b232e;
+
+    --ease-color-border: #2b3441;
+    --ease-color-border-strong: #3d4856;
+
+    --ease-color-text: #e6eaef;
+    --ease-color-text-muted: #9aa4b2;
+    --ease-color-text-subtle: #707b8a;
+    --ease-color-text-disabled: #5a6472;
+    --ease-color-text-inverse: #11161c;
+
+    --ease-color-primary: #5b8def;
+    --ease-color-primary-hover: #6f9bf2;
+    --ease-color-primary-active: #4a7de0;
+    --ease-color-on-primary: #0d1320;
+
+    --ease-color-secondary: #333d4a;
+    --ease-color-on-secondary: #e6eaef;
+
+    --ease-color-success: #4cc38a;
+    --ease-color-success-subtle: #12301f;
+    --ease-color-warning: #e0a83e;
+    --ease-color-warning-subtle: #382913;
+    --ease-color-danger: #e06a6a;
+    --ease-color-danger-subtle: #3a1d1d;
+    --ease-color-info: #6fa0f0;
+    --ease-color-info-subtle: #16283e;
+
+    --ease-color-neutral: #9aa4b2;
+    --ease-color-neutral-subtle: #212a36;
+    --ease-color-on-success: #0b2016;
+    --ease-color-on-warning: #20160a;
+    --ease-color-on-danger: #200e0e;
+    --ease-color-on-info: #0b1626;
+    --ease-color-on-neutral: #11161c;
+
+    --ease-color-selected: #1b2f4d;
+    --ease-color-hover: #212a36;
+    --ease-color-selected-strong: #21324f;
+    --ease-color-active: #2a3340;
+
+    --ease-shadow-sm: 0 1px 2px rgb(0 0 0 / 30%);
+    --ease-shadow-md: 0 4px 12px rgb(0 0 0 / 40%);
+    --ease-shadow-lg: 0 12px 28px rgb(0 0 0 / 50%);
+
+    --ease-focus-ring:
+      0 0 0 2px var(--ease-color-surface), 0 0 0 4px var(--ease-color-primary);
+  }
+}
+
+/*
+ * Density modes.
+ *
+ * Ease UI is compact by default (the `:root` values above). A consumer opts
+ * into a different density by adding a class to any ancestor — typically
+ * <html> or the app root — and the single token set re-derives every control
+ * height, padding, and table row height from the multipliers. No per-component
+ * forking, no `!important`.
+ *
+ *   .ease-density-comfortable  looser paddings + taller controls
+ *   .ease-density-compact      tighter paddings + shorter rows
+ */
+.ease-density-comfortable {
+  --ease-density: 1.1;
+  --ease-density-pad: 1.15;
+  --ease-density-row: 1.15;
+}
+
+.ease-density-compact {
+  --ease-density: 0.9;
+  --ease-density-pad: 0.85;
+  --ease-density-row: 0.85;
+}

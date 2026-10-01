@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  library:
+    name: ease-ui (typecheck / lint / test / build / size)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ease-ui
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: ease-ui/package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm run test
+
+      - name: Build
+        run: npm run build
+
+      - name: Bundle size budget
+        run: npm run size
+
+  example:
+    name: example console app (build)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: examples/console
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: examples/console/package-lock.json
+
+      - name: Install library deps
+        working-directory: ease-ui
+        run: npm ci
+
+      - name: Build library
+        working-directory: ease-ui
+        run: npm run build
+
+      - name: Install example deps
+        run: npm ci
+
+      - name: Build example
+        run: npm run build

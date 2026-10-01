@@ -1,0 +1,23 @@
+/*
+ * Example — styles
+ *
+ * Scope every rule to [data-ease="example"] (and sub-parts via
+ * [data-ease-example="…"]) so the styles never leak and the consumer can
+ * restyle by targeting the same attribute or overriding tokens.
+ *
+ * Read ONLY from --ease-* tokens — no hardcoded colors/sizes. Use logical
+ * properties for RTL readiness. Honor reduced motion via the global media query.
+ */
+.ease-example {
+  display: block;
+  padding: var(--ease-spacing-3);
+  border: 1px solid var(--ease-color-border);
+  border-radius: var(--ease-radius-md);
+  background: var(--ease-color-surface);
+  color: var(--ease-color-text);
+  font-size: var(--ease-font-size-md);
+}
+
+.ease-example [data-ease-example="label"] {
+  color: var(--ease-color-text-muted);
+}
